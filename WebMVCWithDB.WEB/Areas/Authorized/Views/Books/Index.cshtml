@@ -1,0 +1,78 @@
+﻿@using WebMVCWithDB.WEB.Areas.Authorized.Models.Books.Interfaces
+@using PagedList
+@using PagedList.Mvc
+@model IPagedList<IMainBook>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Authorized/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts {
+<script type="text/javascript">
+
+    function test() {
+        $.getJSON("@Url.Action("JsonTest", "Books")", function (data) {
+            $("#bookDetail").append(data);
+        })
+    }
+
+    function showDetail(bookId) {
+        $("#bookDetail").dialog({
+            autoOpen: true,
+            position: { my: "center", at: "top+350", of: window },
+            width: 400,
+            resizable: false,
+            title: 'Book information',
+            modal: true,
+            open: function () {
+                $(this).load('@Url.Action("_BookDetail", "Books")?id='+bookId);
+            },
+            buttons: {
+                "OK": function () {
+                    $(this).dialog("close");
+                }
+                }
+            
+        })}
+ </script>    
+}
+<h2>Index</h2>
+<input type="button" value="click!" onclick="test()"/>
+<div id="bookDetail"></div>
+<table>
+    <tr>
+    <th>
+        Title
+    </th>
+    <th>
+        Author
+    </th>
+    <th>
+        Genre
+    </th>
+        <th></th>
+    </tr>   
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <span class="btn-link" id="detailButton" onclick="showDetail(@item.Id)">@item.Title</span> 
+            </td>
+            <td>
+                @item.Author
+            </td>
+            <td>
+                @item.Genre
+            </td>
+            <td>
+                @Html.RouteLink("delete", "Authorized_default", new { action = "Delete", id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+
+
+
+
+
+

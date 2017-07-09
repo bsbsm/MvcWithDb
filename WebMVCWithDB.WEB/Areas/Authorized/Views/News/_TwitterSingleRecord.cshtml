@@ -1,0 +1,16 @@
+﻿@model WebMVCWithDB.WEB.Areas.Authorized.Models.ApiModels.Twitter.Tweet
+
+<div class="row" style="background-color:lightgray">
+     <div class="col-md-3">
+        @Model.UserName @Model.CreateDate
+    </div>
+    <div class="col-md-2">
+        <a href="@Model.Link" target="_blank">open on twitter</a>
+    </div>
+</div>
+<div class="row" style="background-color:beige">
+    <div class="col-md-5">
+        @Model.Text
+    </div>  
+</div>
+

@@ -1,0 +1,34 @@
+﻿@model WebMVCWithDB.WEB.Areas.Authorized.Models.ApiModels.NewsViewModel
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Areas/Authorized/Views/Shared/_Layout.cshtml";
+}
+
+@foreach (var news in Model.News)
+{
+    <h2>All news about @news.Name</h2>
+
+    <div style="width:100%; height:300px; overflow-y:auto">
+        @if (news.Reddit != null && news.Reddit.Any())
+        {
+            foreach (var rec in news.Reddit)
+            {
+                Html.RenderPartial("_RedditSingleRecord", rec);
+            }
+        }
+    </div>
+    <br />
+    <div style="width:100%; height:300px; overflow-y:auto">
+        @if (news.Twitter != null && news.Twitter.Any())
+        {
+            foreach (var rec in news.Twitter)
+            {
+                Html.RenderPartial("_TwitterSingleRecord", rec);
+            }
+        }
+    </div>
+
+    <br /><br />
+}
+
+

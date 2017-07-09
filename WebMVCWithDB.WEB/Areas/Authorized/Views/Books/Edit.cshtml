@@ -1,0 +1,67 @@
+﻿@model WebMVCWithDB.WEB.Areas.Authorized.Models.Books.CreateBook
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Authorized/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Book Edit</h4>
+
+@using (Html.BeginForm("Edit", "Books", new { id = Model.Id }))
+{
+
+    <div class="row">
+        <div class="form-group">
+            <label class="col-md-4 control-label">Select author</label>
+            <div class="col-md-2">
+                @Html.DropDownListFor(m => m.AuthorId, new SelectList(ViewBag.Authors, "Key", "Value"), "- author -", new { @class= "form-control" })
+                @Html.ValidationMessageFor(m => m.AuthorId)
+            </div>
+        </div>
+    </div>
+       
+
+        <div class="row">
+            <div class="form-group">
+                <label class="col-md-4 control-label" >Title</label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Title)
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="row">
+            <div class="form-group">
+                <label class="col-md-4 control-label">Genre</label>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(m => m.GenreId, new SelectList(ViewBag.Genres, "Key", "Value"), "- genre -", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.GenreId)
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="row">
+            <div class="form-group">
+                <label class="col-md-4 control-label">Description</label>
+                <div class="col-md-4">
+                    @Html.TextAreaFor(m => m.Description,3,3, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Description)
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="row">
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-8">
+                    <input id="submitButton" type="submit" name="submitButton" class="btn btn-success" value="Save">
+                    <a href="@Url.Action("Index","Books")" id="cancel" name="cancel" class="btn btn-inverse">Cancel</a>
+                </div>
+            </div>
+        </div>
+       
+
+}
