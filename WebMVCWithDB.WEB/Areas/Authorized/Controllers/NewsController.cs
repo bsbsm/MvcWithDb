@@ -12,13 +12,12 @@ namespace WebMVCWithDB.WEB.Areas.Authorized.Controllers
     {
         IApiService _service;
         public NewsController(IApiService service)
-        {
-            //Невозможно создать экземпляр интерфейса. Object type 'WebMVCWithDB.WEB.Areas.Authorized.Models.Books.Interfaces.ISearchBook'
+        {           
             _service = service;
         }
 
         // GET: Authorized/News/All
-        public ActionResult Index(NewsTypes? type)
+        public ViewResult Index(NewsTypes? type)
         {
             var model = new NewsViewModel();
 
@@ -30,7 +29,7 @@ namespace WebMVCWithDB.WEB.Areas.Authorized.Controllers
             return View(model);
         }
 
-        public ActionResult News(NewsTypes type)
+        public ViewResult News(NewsTypes type)
         {
             var data = _service.GetNews(NewsTypes.StreetFighter);
 

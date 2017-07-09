@@ -106,9 +106,9 @@
   <ItemGroup>
     <Compile Include="Areas\Authorized\Controllers\BooksControllerTest.cs" />
     <Compile Include="Areas\Authorized\Controllers\MainControllerTest.cs" />
+    <Compile Include="Areas\Authorized\Controllers\NewsControllerTest.cs" />
     <Compile Include="Areas\Authorized\Factories\ModelsFactoryTest.cs" />
     <Compile Include="Areas\Authorized\Services\BooksServiceTest.cs" />
-    <Compile Include="Areas\Authorized\Services\MockDbContext.cs" />
     <Compile Include="Areas\Authorized\Services\ApiServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
